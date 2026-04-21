@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://bkxl6rs1mgyhv"]
+
+[ext_resource type="Script" uid="uid://dhxy3e1np1emw" path="res://Scripts/Shop/Main.gd" id="1_iidq5"]
+[ext_resource type="Texture2D" uid="uid://brunquqygxuq7" path="res://Assets/Textures/Dungeon_brick_wall_blue.png.png" id="2_i4qx4"]
+[ext_resource type="Texture2D" uid="uid://dg6op04o7dia8" path="res://Assets/Textures/Borders.png" id="3_i4qx4"]
+[ext_resource type="Script" uid="uid://dhq5t7ajaac4t" path="res://Scripts/Shop/Dialouge.gd" id="4_wndna"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4qx4"]
+bg_color = Color(0.3647059, 0.3647059, 0.3647059, 0.74509805)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Shop" type="Control" unique_id=74618254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iidq5")
+
+[node name="Top" type="Control" parent="." unique_id=976921566]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Top" unique_id=412428141]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.68120897, 0.68120897)
+texture = ExtResource("2_i4qx4")
+
+[node name="NPCs" type="Control" parent="." unique_id=591762]
+anchors_preset = 0
+offset_top = 240.0
+offset_right = 1280.0
+offset_bottom = 480.0
+mouse_filter = 2
+
+[node name="Table" type="Control" parent="." unique_id=611261236]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="TableTop" type="ColorRect" parent="Table" unique_id=1476529232]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 120.0
+color = Color(0.4, 0.5058824, 0.47058824, 1)
+
+[node name="TableTop2" type="ColorRect" parent="Table" unique_id=651917046]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 1280.0
+offset_bottom = 152.0
+color = Color(0.18431373, 0.19215687, 0.20784314, 1)
+
+[node name="TableTop5" type="ColorRect" parent="Table" unique_id=421820148]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 1280.0
+offset_bottom = 121.0
+color = Color(0.12394569, 0.12987709, 0.14174113, 1)
+
+[node name="TableTop3" type="ColorRect" parent="Table" unique_id=2034850116]
+layout_mode = 0
+offset_top = 152.0
+offset_right = 1280.0
+offset_bottom = 171.0
+color = Color(0.06666667, 0.08235294, 0.08627451, 1)
+
+[node name="TableTop6" type="ColorRect" parent="Table" unique_id=414669785]
+layout_mode = 0
+offset_top = 171.0
+offset_right = 1280.0
+offset_bottom = 240.0
+color = Color(0.008787303, 0.011772155, 0.012598681, 1)
+
+[node name="TableTop4" type="ColorRect" parent="Table" unique_id=555519280]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 1.0
+color = Color(0.11599923, 0.13790858, 0.14338636, 1)
+
+[node name="Dialogue" type="Control" parent="." unique_id=645288968]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 419.0
+offset_top = 454.0
+offset_right = 419.0
+offset_bottom = 454.0
+scale = Vector2(0.47105828, 0.47105828)
+mouse_filter = 2
+script = ExtResource("4_wndna")
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialogue" unique_id=1336847852]
+layout_mode = 0
+offset_right = 457.0
+offset_bottom = 170.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Dialogue/MarginContainer" unique_id=791497165]
+layout_mode = 2
+texture = ExtResource("3_i4qx4")
+region_rect = Rect2(6, 8, 258, 255)
+patch_margin_left = 86
+patch_margin_top = 85
+patch_margin_right = 86
+patch_margin_bottom = 85
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialogue/MarginContainer" unique_id=1624196140]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Speech" type="Label" parent="Dialogue/MarginContainer/MarginContainer" unique_id=459173417]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "this confounds me but did you know that when i eat green eggs"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NPCEncounter" type="Timer" parent="." unique_id=38635425]
+one_shot = true
+autostart = true
+
+[node name="Interactables" type="Control" parent="." unique_id=1455409784]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Inventory" type="Control" parent="Interactables" unique_id=797905217]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 56.0
+offset_right = 83.0
+offset_bottom = 430.0
+
+[node name="InventoryHover" type="Panel" parent="Interactables/Inventory" unique_id=2143688049]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i4qx4")
+
+[node name="Label" type="Label" parent="Interactables/Inventory/InventoryHover" unique_id=105657675]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 374.0
+text = "<<<"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cauldron" type="Control" parent="Interactables" unique_id=410571106]
+anchors_preset = 0
+offset_left = 1178.0
+offset_top = 56.0
+offset_right = 1241.0
+offset_bottom = 430.0
+
+[node name="CauldronHover" type="Panel" parent="Interactables/Cauldron" unique_id=2115741335]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i4qx4")
+
+[node name="Label" type="Label" parent="Interactables/Cauldron/CauldronHover" unique_id=1994373094]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 374.0
+text = ">>>  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="NPCEncounter" to="." method="_on_npc_encounter_timeout"]
+[connection signal="mouse_entered" from="Interactables/Inventory/InventoryHover" to="." method="_on_inventory_hover_mouse_entered"]
+[connection signal="mouse_entered" from="Interactables/Cauldron/CauldronHover" to="." method="_on_cauldron_hover_mouse_entered"]

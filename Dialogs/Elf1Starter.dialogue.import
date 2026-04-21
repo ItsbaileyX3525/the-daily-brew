@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://wfb30oi0vyt0"
+path="res://.godot/imported/Elf1Starter.dialogue-1d897983d63016a8e5506553e17161bd.tres"
+
+[deps]
+
+source_file="res://Dialogs/Elf1Starter.dialogue"
+dest_files=["res://.godot/imported/Elf1Starter.dialogue-1d897983d63016a8e5506553e17161bd.tres"]
+
+[params]
+
+defaults=true

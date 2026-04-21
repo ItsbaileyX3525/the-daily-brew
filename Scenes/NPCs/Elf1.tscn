@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c5judjvsg4vqj"]
+
+[ext_resource type="Texture2D" uid="uid://filbtpol32uq" path="res://Assets/Sprites/NPC/Female Elf/FemaleElf.png" id="1_p7syw"]
+[ext_resource type="Script" uid="uid://dxkosc57xjhov" path="res://Scripts/NPCs/Elf1/Main.gd" id="2_qk0rx"]
+
+[node name="Elf" type="TextureRect" unique_id=1519144772]
+offset_right = 677.0
+offset_bottom = 369.0
+texture = ExtResource("1_p7syw")
+script = ExtResource("2_qk0rx")
