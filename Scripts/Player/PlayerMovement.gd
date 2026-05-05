@@ -56,3 +56,12 @@ func _on_idle_animation_handler_animation_finished(anim_name: StringName) -> voi
 	match anim_name:
 		"Idle1":
 			idle_animation_handler.play("Idle")
+			
+func entered_trigger(location_info: String):
+	print("Entered trigger")
+	
+	if !Locations.check_location(location_info):
+		print("Invalid location")
+		return
+		
+	

@@ -30,6 +30,6 @@ func _on_npc_encounter_timeout() -> void:
 
 func _on_inventory_hover_mouse_entered() -> void:
 	print("Open inventory")
-
+ 
 func _on_cauldron_hover_mouse_entered() -> void:
 	print("Open brew")
