@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bntqleq64le3v" path="res://Scripts/Player/PlayerMovement.gd" id="1_gntrk"]
 [ext_resource type="Texture2D" uid="uid://535admphe17o" path="res://Assets/Sprites/Character/Movement/Walk.png" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://dxcesxr7hnufl" path="res://Assets/Sprites/Character/Idle/Idle.png" id="2_gntrk"]
+[ext_resource type="Texture2D" uid="uid://cfw4n8jxsvflx" path="res://Assets/Textures/UI/HUD stuff/Sign.jpeg" id="4_dewec"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dewec"]
 radius = 8.0
@@ -152,6 +153,13 @@ _data = {
 &"RESET": SubResource("Animation_gntrk")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewec"]
+bg_color = Color(0.09803922, 0.09803922, 0.09803922, 0.6666667)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Player" type="CharacterBody2D" unique_id=758467496]
 script = ExtResource("1_gntrk")
 
@@ -188,6 +196,72 @@ zoom = Vector2(2.805, 2.805)
 [node name="Idle" type="Timer" parent="Timer" unique_id=1895427257]
 wait_time = 3.5
 one_shot = true
+
+[node name="UI" type="Control" parent="." unique_id=1786489079]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" type="Control" parent="UI" unique_id=3772928]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Control" parent="UI" unique_id=64881596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/Text" unique_id=1391178430]
+visible = false
+layout_mode = 0
+offset_left = -68.0
+offset_top = 105.0
+offset_right = 74.0
+offset_bottom = 122.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dewec")
+
+[node name="SignText" type="Label" parent="UI/Text/Panel" unique_id=1027932346]
+layout_mode = 0
+offset_top = 1.1920929e-05
+offset_right = 1411.322
+offset_bottom = 168.96095
+scale = Vector2(0.100614876, 0.100614876)
+theme_override_font_sizes/font_size = 120
+text = "Press 'e' to read sign"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SignTexture" type="TextureRect" parent="UI/Text" unique_id=17055418]
+visible = false
+layout_mode = 0
+offset_left = -80.00001
+offset_top = -88.0
+offset_right = 388.0
+offset_bottom = 146.0
+scale = Vector2(0.34959224, 0.34959224)
+texture = ExtResource("4_dewec")
+
+[node name="SignText" type="Label" parent="UI/Text/SignTexture" unique_id=850935219]
+layout_mode = 0
+offset_left = 5.72097
+offset_top = 5.720973
+offset_right = 2806.639
+offset_bottom = 1371.1685
+scale = Vector2(0.16340216, 0.16340216)
+theme_override_font_sizes/font_size = 200
+text = "none inputted's house"
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="Idle/IdleAnimationHandler" to="." method="_on_idle_animation_handler_animation_finished"]
 [connection signal="timeout" from="Timer/Idle" to="." method="_on_idle_timeout"]
