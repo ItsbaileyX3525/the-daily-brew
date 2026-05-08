@@ -1,7 +1,22 @@
 [gd_scene format=3 uid="uid://buwvtrh45855y"]
 
-[ext_resource type="Texture2D" uid="uid://d24abshx5fr3f" path="res://Assets/Textures/UI/HUD stuff/Gemini_Generated_Image_5mygau5mygau5myg-removebg-preview.png" id="1_1rerr"]
+[ext_resource type="Theme" uid="uid://cl1ln8rjohsbg" path="res://Themes/Menu.tres" id="1_cayip"]
+[ext_resource type="Texture2D" uid="uid://cucgmsh2187ll" path="res://Assets/Textures/UI/HUD stuff/ItemFrame.png" id="2_cayip"]
+[ext_resource type="Script" uid="uid://c2r1syexehy2n" path="res://Scripts/menu.gd" id="2_wwsa2"]
 [ext_resource type="Texture2D" uid="uid://b1mt1ui10ghyp" path="res://Assets/Textures/UI/HUD stuff/PlayerFrame.png" id="2_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://dh86kqiqnpb85" path="res://Assets/Textures/UI/HUD stuff/ItemFrameSelect.webp" id="3_158mb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_158mb"]
+texture = ExtResource("2_cayip")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbdvm"]
+texture = ExtResource("2_cayip")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wwsa2"]
+texture = ExtResource("3_158mb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jsrd8"]
+texture = ExtResource("2_cayip")
 
 [node name="Menu" type="Control" unique_id=1220575936]
 layout_mode = 3
@@ -10,12 +25,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="GeminiGeneratedImage5Mygau5Mygau5MygRemovebgPreview" type="Sprite2D" parent="." unique_id=1326938059]
-visible = false
-position = Vector2(640, 360)
-scale = Vector2(1.8906944, 1.9512196)
-texture = ExtResource("1_1rerr")
+theme = ExtResource("1_cayip")
+script = ExtResource("2_wwsa2")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=778981487]
 layout_mode = 0
@@ -28,138 +39,141 @@ expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect2" unique_id=1010136280]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 57.0
-offset_right = 383.0
-offset_bottom = 444.0
-theme_override_constants/separation = 9
+offset_left = 31.0
+offset_top = 55.0
+offset_right = 1299.0
+offset_bottom = 649.0
+scale = Vector2(0.31897202, 0.31897202)
+theme_override_constants/separation = -33
 
 [node name="Continue" type="Button" parent="TextureRect2/VBoxContainer" unique_id=872598476]
-custom_minimum_size = Vector2(20, 57)
+custom_minimum_size = Vector2(20, 270)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../NewGame")
+theme_override_styles/normal = SubResource("StyleBoxTexture_158mb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbdvm")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 
 [node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Continue" unique_id=1428116735]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.9999962
-offset_right = 256.09784
-offset_bottom = 46.29416
+offset_left = 19.635296
+offset_top = 22.90792
+offset_right = 1047.1594
+offset_bottom = 129.53946
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5474408, 0.5474408)
-theme_override_font_sizes/font_size = 51
+theme_override_font_sizes/font_size = 160
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 text = "CONTINUE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewGame" type="Button" parent="TextureRect2/VBoxContainer" unique_id=449503400]
-custom_minimum_size = Vector2(20, 57)
+[node name="NewGame" type="Button" parent="TextureRect2/VBoxContainer" unique_id=1533396121]
+custom_minimum_size = Vector2(20, 270)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Continue")
-focus_neighbor_bottom = NodePath("../LoadGame")
+focus_neighbor_bottom = NodePath("../Options")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jsrd8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbdvm")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 
-[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/NewGame" unique_id=1058922629]
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/NewGame" unique_id=346747838]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.9999962
-offset_right = 256.09784
-offset_bottom = 46.29416
+offset_left = 19.635296
+offset_top = 22.90792
+offset_right = 1047.1594
+offset_bottom = 129.53946
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5474408, 0.5474408)
-theme_override_font_sizes/font_size = 51
+theme_override_font_sizes/font_size = 160
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 text = "NEW GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LoadGame" type="Button" parent="TextureRect2/VBoxContainer" unique_id=555604295]
-custom_minimum_size = Vector2(20, 57)
+[node name="Options" type="Button" parent="TextureRect2/VBoxContainer" unique_id=68729208]
+custom_minimum_size = Vector2(20, 270)
 layout_mode = 2
 focus_neighbor_top = NodePath("../NewGame")
-focus_neighbor_bottom = NodePath("../Options")
-
-[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/LoadGame" unique_id=172267258]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.9999962
-offset_right = 256.09784
-offset_bottom = 46.29416
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5474408, 0.5474408)
-theme_override_font_sizes/font_size = 51
-text = "LOAD GAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Options" type="Button" parent="TextureRect2/VBoxContainer" unique_id=91405986]
-custom_minimum_size = Vector2(20, 57)
-layout_mode = 2
-focus_neighbor_top = NodePath("../LoadGame")
 focus_neighbor_bottom = NodePath("../Credits")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jsrd8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbdvm")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 
-[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Options" unique_id=1848279827]
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Options" unique_id=82586217]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.9999962
-offset_right = 256.09784
-offset_bottom = 46.29416
+offset_left = 19.635296
+offset_top = 22.90792
+offset_right = 1047.1594
+offset_bottom = 129.53946
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5474408, 0.5474408)
-theme_override_font_sizes/font_size = 51
+theme_override_font_sizes/font_size = 160
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 text = "OPTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credits" type="Button" parent="TextureRect2/VBoxContainer" unique_id=180617605]
-custom_minimum_size = Vector2(20, 57)
+[node name="Credits" type="Button" parent="TextureRect2/VBoxContainer" unique_id=1285582163]
+custom_minimum_size = Vector2(20, 270)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Quit")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jsrd8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbdvm")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 
-[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Credits" unique_id=1362891732]
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Credits" unique_id=1949423842]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.9999962
-offset_right = 256.09784
-offset_bottom = 46.29416
+offset_left = 19.635296
+offset_top = 22.90792
+offset_right = 1047.1594
+offset_bottom = 129.53946
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5474408, 0.5474408)
-theme_override_font_sizes/font_size = 51
+theme_override_font_sizes/font_size = 160
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 text = "CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="Button" parent="TextureRect2/VBoxContainer" unique_id=678849805]
-custom_minimum_size = Vector2(20, 57)
+[node name="Quit" type="Button" parent="TextureRect2/VBoxContainer" unique_id=2044498666]
+custom_minimum_size = Vector2(20, 270)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Credits")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jsrd8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbdvm")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wwsa2")
 
-[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Quit" unique_id=759517705]
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Quit" unique_id=2109878117]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.9999962
-offset_right = 256.09784
-offset_bottom = 46.29416
+offset_left = 19.635296
+offset_top = 22.90792
+offset_right = 1047.1594
+offset_bottom = 129.53946
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5474408, 0.5474408)
-theme_override_font_sizes/font_size = 51
+theme_override_font_sizes/font_size = 160
 text = "QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -181,6 +195,12 @@ offset_right = 1152.4382
 offset_bottom = 219.10178
 scale = Vector2(0.44585603, 0.44585603)
 theme_override_font_sizes/font_size = 86
-text = "GAME NAME"
+text = "THE DAILY BREW"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="TextureRect2/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="TextureRect2/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="TextureRect2/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="TextureRect2/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="TextureRect2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

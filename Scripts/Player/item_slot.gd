@@ -3,7 +3,7 @@ extends Panel
 @onready var icon: TextureRect = $Icon
 
 
-func _get_drag_data(at_position: Vector2) -> Variant:
+func _get_drag_data(_at_position: Vector2) -> Variant:
 	if icon.texture == null:
 		return
 		
@@ -19,10 +19,10 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	icon.hide()
 	return icon
 
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return true
 	
-func _drop_data(at_position: Vector2, data: Variant) -> void:
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var tmp = icon.texture
 	icon.texture = data.texture
 	data.texture = tmp

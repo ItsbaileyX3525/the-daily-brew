@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dxcesxr7hnufl" path="res://Assets/Sprites/Character/Idle/Idle.png" id="2_gntrk"]
 [ext_resource type="Texture2D" uid="uid://b1mt1ui10ghyp" path="res://Assets/Textures/UI/HUD stuff/PlayerFrame.png" id="4_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://cfw4n8jxsvflx" path="res://Assets/Textures/UI/HUD stuff/Sign.jpeg" id="4_dewec"]
-[ext_resource type="Texture2D" path="res://Assets/Textures/UI/HUD stuff/thing.png" id="4_nn08x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
 size = Vector2(15, 8)
@@ -241,12 +240,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Thing" type="Sprite2D" parent="UI/HUD" unique_id=596270277]
-visible = false
-position = Vector2(-158, -96)
-scale = Vector2(0.19143504, 0.19143504)
-texture = ExtResource("4_nn08x")
-
 [node name="PlayerFrame" type="Control" parent="UI/HUD" unique_id=1673916904]
 anchors_preset = 0
 offset_left = -223.0
@@ -392,7 +385,7 @@ offset_right = 74.0
 offset_bottom = 122.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dewec")
 
-[node name="SignText" type="Label" parent="UI/Text/Panel" unique_id=1027932346]
+[node name="InteractText" type="Label" parent="UI/Text/Panel" unique_id=1027932346]
 layout_mode = 0
 offset_top = 1.1920929e-05
 offset_right = 1411.322

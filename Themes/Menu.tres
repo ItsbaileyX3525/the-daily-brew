@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://cl1ln8rjohsbg"]
+
+[ext_resource type="FontFile" uid="uid://cwvtixkqi1sbj" path="res://Assets/Fonts/Cause-ExtraBold.ttf" id="1_4knt0"]
+[ext_resource type="Texture2D" uid="uid://dh86kqiqnpb85" path="res://Assets/Textures/UI/HUD stuff/ItemFrameSelect.webp" id="1_bgegf"]
+[ext_resource type="Texture2D" uid="uid://cucgmsh2187ll" path="res://Assets/Textures/UI/HUD stuff/ItemFrame.png" id="2_37d6x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l0mus"]
+texture = ExtResource("1_bgegf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kok38"]
+texture = ExtResource("2_37d6x")
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_l0mus")
+Button/styles/normal = SubResource("StyleBoxTexture_kok38")
+Label/fonts/font = ExtResource("1_4knt0")

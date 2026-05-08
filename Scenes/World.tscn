@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dj2phm83ubnbl" path="res://World/Flooring.tres" id="1_5nsto"]
 [ext_resource type="Texture2D" uid="uid://cch02udwb6ic1" path="res://Assets/Sprites/World/Floor/tilemap.png" id="1_j0p05"]
 [ext_resource type="PackedScene" uid="uid://dkp1yjd50heiq" path="res://Scenes/Player.tscn" id="3_5nsto"]
-[ext_resource type="Script" uid="uid://fi4lgaraljyt" path="res://Scripts/World/TriggerHandler.gd" id="4_gjpho"]
+[ext_resource type="Script" uid="uid://fi4lgaraljyt" path="res://Scripts/TriggerHandlers/WorldTriggers.gd" id="4_gjpho"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0p05"]
 texture = ExtResource("1_j0p05")
@@ -225,7 +225,7 @@ script = ExtResource("4_gjpho")
 [node name="PlayerHouse" type="Area2D" parent="Triggers" unique_id=1065873170]
 position = Vector2(144, 0)
 metadata/location = "PlayerHouse"
-metadata/triggertype = "house"
+metadata/triggertype = "teleport"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PlayerHouse" unique_id=469656181]
 position = Vector2(0.5, 0)
