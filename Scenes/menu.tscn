@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://buwvtrh45855y"]
+
+[ext_resource type="Texture2D" uid="uid://d24abshx5fr3f" path="res://Assets/Textures/UI/HUD stuff/Gemini_Generated_Image_5mygau5mygau5myg-removebg-preview.png" id="1_1rerr"]
+[ext_resource type="Texture2D" uid="uid://b1mt1ui10ghyp" path="res://Assets/Textures/UI/HUD stuff/PlayerFrame.png" id="2_xhh6f"]
+
+[node name="Menu" type="Control" unique_id=1220575936]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GeminiGeneratedImage5Mygau5Mygau5MygRemovebgPreview" type="Sprite2D" parent="." unique_id=1326938059]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(1.8906944, 1.9512196)
+texture = ExtResource("1_1rerr")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=778981487]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 90.0
+offset_right = 870.0
+offset_bottom = 585.0
+texture = ExtResource("2_xhh6f")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect2" unique_id=1010136280]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 57.0
+offset_right = 383.0
+offset_bottom = 444.0
+theme_override_constants/separation = 9
+
+[node name="Continue" type="Button" parent="TextureRect2/VBoxContainer" unique_id=872598476]
+custom_minimum_size = Vector2(20, 57)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../NewGame")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Continue" unique_id=1428116735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.9999962
+offset_right = 256.09784
+offset_bottom = 46.29416
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5474408, 0.5474408)
+theme_override_font_sizes/font_size = 51
+text = "CONTINUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGame" type="Button" parent="TextureRect2/VBoxContainer" unique_id=449503400]
+custom_minimum_size = Vector2(20, 57)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../LoadGame")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/NewGame" unique_id=1058922629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.9999962
+offset_right = 256.09784
+offset_bottom = 46.29416
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5474408, 0.5474408)
+theme_override_font_sizes/font_size = 51
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadGame" type="Button" parent="TextureRect2/VBoxContainer" unique_id=555604295]
+custom_minimum_size = Vector2(20, 57)
+layout_mode = 2
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../Options")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/LoadGame" unique_id=172267258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.9999962
+offset_right = 256.09784
+offset_bottom = 46.29416
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5474408, 0.5474408)
+theme_override_font_sizes/font_size = 51
+text = "LOAD GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="TextureRect2/VBoxContainer" unique_id=91405986]
+custom_minimum_size = Vector2(20, 57)
+layout_mode = 2
+focus_neighbor_top = NodePath("../LoadGame")
+focus_neighbor_bottom = NodePath("../Credits")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Options" unique_id=1848279827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.9999962
+offset_right = 256.09784
+offset_bottom = 46.29416
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5474408, 0.5474408)
+theme_override_font_sizes/font_size = 51
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Button" parent="TextureRect2/VBoxContainer" unique_id=180617605]
+custom_minimum_size = Vector2(20, 57)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Quit")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Credits" unique_id=1362891732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.9999962
+offset_right = 256.09784
+offset_bottom = 46.29416
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5474408, 0.5474408)
+theme_override_font_sizes/font_size = 51
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="TextureRect2/VBoxContainer" unique_id=678849805]
+custom_minimum_size = Vector2(20, 57)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Credits")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/Quit" unique_id=759517705]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.9999962
+offset_right = 256.09784
+offset_bottom = 46.29416
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5474408, 0.5474408)
+theme_override_font_sizes/font_size = 51
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=423309002]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 23.0
+offset_right = 919.0
+offset_bottom = 144.0
+texture = ExtResource("2_xhh6f")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="TextureRect" unique_id=1644339927]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 15.000001
+offset_right = 1152.4382
+offset_bottom = 219.10178
+scale = Vector2(0.44585603, 0.44585603)
+theme_override_font_sizes/font_size = 86
+text = "GAME NAME"
+horizontal_alignment = 1
+vertical_alignment = 1

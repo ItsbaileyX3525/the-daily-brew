@@ -9,12 +9,17 @@ extends CharacterBody2D
 @onready var sign_texture: TextureRect = $UI/Text/SignTexture
 @onready var sign_text: Label = $UI/Text/SignTexture/SignText
 @onready var show_sign_text: Panel = $UI/Text/Panel
+@export var showPlayerFrame: bool = true
+@onready var player_frame: Control = $UI/HUD/PlayerFrame
 
 var sign_interactable: bool = false
 
 var is_idle: bool = false
 var time_idle: float = 0.0
 @onready var idle_timer: Timer = $Timer/Idle
+
+func _ready() -> void:
+	player_frame.visible = showPlayerFrame
 
 func parse_string(input: String) -> String:
 	var regex = RegEx.new()
@@ -56,42 +61,48 @@ func display_sign() -> void:
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("wl", "wr", "wf", "wb")
 	
+	print(velocity)
+	
 	if direction != Vector2.ZERO:
 		velocity = direction * speed
 	else:
 		# Smoothly slow down to a stop
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
+	
+	move_and_slide()
+	
+	#Movement animations
+	if velocity.length_squared() > 0.1:
+		print("walking")
+		match direction:
+			Vector2(0.0, -1.0): #Walking forward
+				idle.visible = false
+				movement.visible = true
+				movement_animation_handler.play("walk_forward")
+			Vector2(0.0, 1.0): #Walking backward
+				idle.visible = false
+				movement.visible = true
+				movement_animation_handler.play("walk_back")
+			Vector2(-1.0, 0.0): #Walking left
+				idle.visible = false
+				movement.visible = true
+				movement_animation_handler.play("walk_left")
+			Vector2(1.0, 0.0): #Walking right
+				idle.visible = false
+				movement.visible = true
+				movement_animation_handler.play("walk_right")
 
 	#Idle animations
-	if not (Input.is_action_pressed("wb") or Input.is_action_pressed("wf") or Input.is_action_pressed("wr") or Input.is_action_pressed("wl")):
+	if (not (Input.is_action_pressed("wb") or Input.is_action_pressed("wf") or Input.is_action_pressed("wr") or Input.is_action_pressed("wl"))) or not velocity.length_squared() > 0.1:
+		print("Idleing")
 		idle.visible = true
 		movement.visible = false
 		idle_animation_handler.play("Idle")
 		idle_timer.start()
-		
-	#Movement animations
-	if Input.is_action_just_pressed("wl"):
-		idle.visible = false
-		movement.visible = true
-		movement_animation_handler.play("walk_left")
-	if Input.is_action_just_pressed("wr"):
-		idle.visible = false
-		movement.visible = true
-		movement_animation_handler.play("walk_right")
-	if Input.is_action_just_pressed("wb"):
-		idle.visible = false
-		movement.visible = true
-		movement_animation_handler.play("walk_back")
-	if Input.is_action_just_pressed("wf"):
-		idle.visible = false
-		movement.visible = true
-		movement_animation_handler.play("walk_forward")
+		movement_animation_handler.stop()
 
 	if sign_interactable and Input.is_action_just_pressed("interact"):
 		display_sign()
-
-	move_and_slide()
-
 func _on_idle_timeout() -> void:
 	#Play idle animation
 	idle_animation_handler.play("Idle1")
