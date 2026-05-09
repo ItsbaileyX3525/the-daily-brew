@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var interact_text: Label = $UI/Text/Panel/InteractText
 @export var showPlayerFrame: bool = true
 @onready var player_frame: Control = $UI/HUD/PlayerFrame
+@onready var fade: ColorRect = $UI/Fade
+@export var diagonal_walk: bool = true
 
 var sign_interactable: bool = false
 var can_teleport: bool = false
@@ -21,6 +23,7 @@ var time_idle: float = 0.0
 @onready var idle_timer: Timer = $Timer/Idle
 
 var location_hold: String
+signal tween_complete
 
 func _ready() -> void:
 	player_frame.visible = showPlayerFrame
@@ -61,8 +64,35 @@ func display_sign() -> void:
 		show_interact_text.visible = true
 		sign_interactable = true
 
+func fade_transition() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade, "modulate", Color.hex(0xffffffff), .6)
+	tween.tween_callback(tween_complete.emit)
+
+func fade_transition_out() -> void:
+	fade.modulate = Color.hex(0x00000)
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade, "modulate", Color.hex(0xffffffff), .6)
+	tween.tween_callback(tween_complete.emit)
+
+
 func _physics_process(_delta: float) -> void:
-	var direction := Input.get_vector("wl", "wr", "wf", "wb")
+	var direction: Vector2
+
+	if Input.is_action_pressed("wl"):
+		direction = Vector2.LEFT
+	if Input.is_action_pressed("wr"):
+		if direction != Vector2.LEFT:
+			direction = Vector2.RIGHT
+		else:
+			direction = Vector2.ZERO
+	if Input.is_action_pressed("wf"):
+		direction = Vector2.UP
+	if Input.is_action_pressed("wb"):
+		if direction != Vector2.UP:
+			direction = Vector2.DOWN
+		else:
+			direction = Vector2.ZERO
 
 	if direction != Vector2.ZERO:
 		velocity = direction * speed
@@ -72,7 +102,6 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
-	#Movement animations
 	if velocity.length_squared() > 0.1:
 		match direction:
 			Vector2(0.0, -1.0): #Walking forward
@@ -91,8 +120,6 @@ func _physics_process(_delta: float) -> void:
 				idle.visible = false
 				movement.visible = true
 				movement_animation_handler.play("walk_right")
-			_: #Means walking diagonally
-				return
 
 	#Idle animations
 	if (not (Input.is_action_pressed("wb") or Input.is_action_pressed("wf") or Input.is_action_pressed("wr") or Input.is_action_pressed("wl")) or not velocity.length_squared() > 0.1) and not idle.visible:
@@ -107,7 +134,9 @@ func _physics_process(_delta: float) -> void:
 			sign_interactable:
 				display_sign()
 			can_teleport:
-				print("Teleporting")
+				fade_transition()
+				await tween_complete
+				Locations.switch_location(location_hold)
 		
 	
 

@@ -1,32 +1,36 @@
 extends Node
 
-var items: Dictionary = {
-	"cheese" : preload("uid://be7txba0hvcad"),
-	
-}
-
 var default_playerData: Dictionary = {
-	"charname" : "none inputted",
+	"charname" : "None",
+	"firstPlay" : "true",
+	"maxHealth" : 100,
+	"neededExp" : 100,
+	"exp" : 0,
+	"playerInventory" : [
+		[]
+	]
 }
-
-var default_inventory: Array = [
-	[],
-]
-
-var playerInventory: Array = [
-	["cheese", 2]
-]
 
 var playerData: Dictionary
 
 func save_data():
-	return
+	var game_file := FileAccess.open("user://playerData.json", FileAccess.WRITE)
 	
-func load_data():
+	var json_string := JSON.stringify(playerData)
+	game_file.store_line(json_string)
 	
-	return
+func load_data() -> Dictionary:
+	var loaded_data: Dictionary
+	if not FileAccess.file_exists("user://playerData.json"):
+		return default_playerData
+	
+	var game_save := FileAccess.get_file_as_string("user://playerData.json")
+
+	loaded_data = JSON.parse_string(game_save)
+
+	return loaded_data
 	
 func _ready() -> void:
 	load_data()
-	playerData = default_playerData.duplicate(true)
-	print(playerData.charname)
+	playerData = load_data().duplicate_deep()
+	print(playerData)

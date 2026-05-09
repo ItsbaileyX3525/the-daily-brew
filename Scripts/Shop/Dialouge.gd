@@ -7,17 +7,34 @@ var line_index: int = 0
 var lines: Array[String] = []
 var is_speaking: bool = false
 var skip: bool = false
+var character: Button 
 
 signal line_finished()
+signal dialog_complete()
+
+func bounce_npc() -> void:
+	var curr_pos = character.position
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(character, "position", Vector2(curr_pos.x, curr_pos.y-10.0), .15)
+	tween.set_ease(tween.EASE_IN_OUT)
+	await tween.finished
+	var tween2 = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	tween2.tween_property(character, "position", Vector2(curr_pos.x,curr_pos.y), .1)
+	tween2.set_ease(tween.EASE_IN_OUT)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("advance_dialog"):
+		get_tree().root.set_input_as_handled()
 		if is_speaking:
 			skip = true
-		else:
+		else:        
 			advance_to_next_line()
 
-func create_dialog(new_lines: Array[String]) -> void:
+func create_dialog(new_lines: Array[String], char: Button) -> void:
+	if visible and lines.size() > 0:
+		return
+	character = char
+	bounce_npc() #Inital bounce on load
 	if not visible:
 		visible = true 
 	lines = new_lines
@@ -32,9 +49,17 @@ func advance_to_next_line() -> void:
 	line_index += 1
 	if line_index < lines.size():
 		start_typing()
+		bounce_npc()
 	else:
 		#Dialog complete
+		if character:
+			dialog_complete.emit()
+		line_index = 0
+		lines = []
+		is_speaking = false
+		skip = false
 		visible = false
+		character = null
 		pass
 
 func start_typing() -> void:

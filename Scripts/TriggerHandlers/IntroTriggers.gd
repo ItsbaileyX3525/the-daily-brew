@@ -3,8 +3,6 @@ extends Node2D
 var trigger_types: Dictionary
 @onready var triggers: Node2D = $"."
 
-signal teleport(teleport_location: String)
-
 func teleport_trigger(body: Node2D, location_info: String) -> void:
 	if body.name != "Player":
 		return
@@ -17,12 +15,7 @@ func left_teleport_trigger(body: Node2D) -> void:
 	
 	body.left_teleport_trigger()
 
-func teleported(location_info: String):
-	print("Attempted to teleport to: ", location_info)
-
 func _ready() -> void:
-	teleport.connect(teleported)
-	
 	trigger_types = {
 		"body_enter" : {
 			"teleport" : func(body:Node2D, trigger: Area2D): teleport_trigger(body, trigger.get_meta("location")),

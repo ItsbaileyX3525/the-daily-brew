@@ -141,7 +141,6 @@ autowrap_mode = 3
 
 [node name="NPCEncounter" type="Timer" parent="." unique_id=38635425]
 one_shot = true
-autostart = true
 
 [node name="Interactables" type="Control" parent="." unique_id=1455409784]
 anchors_preset = 0
@@ -198,6 +197,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Inventory" type="Control" parent="." unique_id=514839220]
+visible = false
 anchors_preset = 0
 offset_left = 104.0
 offset_top = 56.0
@@ -582,6 +582,16 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1420916595]
+visible = false
+layout_mode = 0
+offset_left = -525.0
+offset_top = -367.0
+offset_right = 1862.0
+offset_bottom = 1155.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="NPCEncounter" to="." method="_on_npc_encounter_timeout"]
 [connection signal="mouse_entered" from="Interactables/Inventory/InventoryHover" to="." method="_on_inventory_hover_mouse_entered"]

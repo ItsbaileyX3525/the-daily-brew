@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkp1yjd50heiq"]
 
-[ext_resource type="Script" uid="uid://bntqleq64le3v" path="res://Scripts/Player/PlayerMovement.gd" id="1_gntrk"]
+[ext_resource type="Script" uid="uid://bntqleq64le3v" path="res://Scripts/Player/Player.gd" id="1_gntrk"]
 [ext_resource type="Texture2D" uid="uid://535admphe17o" path="res://Assets/Sprites/Character/Movement/Walk.png" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://dxcesxr7hnufl" path="res://Assets/Sprites/Character/Idle/Idle.png" id="2_gntrk"]
 [ext_resource type="Texture2D" uid="uid://b1mt1ui10ghyp" path="res://Assets/Textures/UI/HUD stuff/PlayerFrame.png" id="4_5ixxa"]
@@ -44,6 +44,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_nn08x"]
 resource_name = "walk_forward"
 length = 0.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -187,13 +188,14 @@ corner_radius_bottom_left = 8
 
 [node name="Player" type="CharacterBody2D" unique_id=758467496]
 script = ExtResource("1_gntrk")
+speed = 100.0
+diagonal_walk = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054361416]
 position = Vector2(-0.5, 9)
 shape = SubResource("RectangleShape2D_nn08x")
 
 [node name="Movement" type="Sprite2D" parent="." unique_id=1813401983]
-visible = false
 position = Vector2(0, -2)
 texture = ExtResource("1_kyqiw")
 hframes = 6
@@ -202,7 +204,7 @@ frame = 6
 
 [node name="MovementAnimationHandler" type="AnimationPlayer" parent="Movement" unique_id=1681511521]
 libraries/ = SubResource("AnimationLibrary_megsn")
-speed_scale = 0.1
+speed_scale = 0.22
 
 [node name="Idle" type="Sprite2D" parent="." unique_id=608478632]
 position = Vector2(0, -2)
@@ -416,6 +418,16 @@ scale = Vector2(0.16340216, 0.16340216)
 theme_override_font_sizes/font_size = 200
 text = "none inputted's house"
 horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="UI" unique_id=1109231229]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -262.0
+offset_top = -163.0
+offset_right = 286.0
+offset_bottom = 163.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="animation_finished" from="Idle/IdleAnimationHandler" to="." method="_on_idle_animation_handler_animation_finished"]
 [connection signal="timeout" from="Timer/Idle" to="." method="_on_idle_timeout"]

@@ -1,8 +1,9 @@
 extends Node
 
 const valid_locations: Dictionary = {
-	"PlayerHouse" : preload("res://Scenes/Shop.tscn"),
-	"World" : preload("res://Scenes/World.tscn")
+	"PlayerHouse" : preload("uid://kjf5gn5n0mai"),
+	"World" :  preload("uid://nesq618xk3u"),
+	"Shop" : preload("uid://bkxl6rs1mgyhv")
 }
 
 func check_location(location: String):

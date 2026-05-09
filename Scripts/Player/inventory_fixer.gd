@@ -6,9 +6,11 @@ extends Panel
 
 func _ready() -> void:
 	#Load inventory
-	var tmp_data = DataManager.playerInventory.duplicate()
+	var tmp_data = DataManager.playerData.playerInventory.duplicate()
 	print(tmp_data)
 	for e in tmp_data:
+		if not len(e) > 0:
+			continue
 		print(e)
 		print("Item slot: ", e[1])
 		print("Item name: ", e[0])

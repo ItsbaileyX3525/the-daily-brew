@@ -1,13 +1,13 @@
-[gd_scene format=4 uid="uid://dng6um60n5h2n"]
+[gd_scene format=4 uid="uid://kjf5gn5n0mai"]
 
-[ext_resource type="Texture2D" uid="uid://dvlee04mnnqcv" path="res://Assets/Sprites/World/inside/roguelikeIndoor_transparent.png" id="1_alxvg"]
-[ext_resource type="Script" uid="uid://ds6a0lv68avos" path="res://Scripts/intro.gd" id="1_hwjxs"]
-[ext_resource type="Texture2D" uid="uid://qrikhd41gurl" path="res://Assets/Sprites/World/inside/roguelikeSheet_transparent.png" id="2_geirw"]
-[ext_resource type="PackedScene" uid="uid://dkp1yjd50heiq" path="res://Scenes/Player.tscn" id="3_hwjxs"]
-[ext_resource type="Script" uid="uid://1a6i48il8vwh" path="res://Scripts/TriggerHandlers/IntroTriggers.gd" id="4_rsiac"]
+[ext_resource type="Script" uid="uid://ds6a0lv68avos" path="res://Scripts/intro.gd" id="1_ojju5"]
+[ext_resource type="Texture2D" uid="uid://dvlee04mnnqcv" path="res://Assets/Sprites/World/inside/roguelikeIndoor_transparent.png" id="2_d2u3c"]
+[ext_resource type="Texture2D" uid="uid://qrikhd41gurl" path="res://Assets/Sprites/World/inside/roguelikeSheet_transparent.png" id="3_n74rl"]
+[ext_resource type="PackedScene" uid="uid://dkp1yjd50heiq" path="res://Scenes/Player.tscn" id="4_ox8el"]
+[ext_resource type="Script" uid="uid://1a6i48il8vwh" path="res://Scripts/TriggerHandlers/IntroTriggers.gd" id="5_6tim1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsiac"]
-texture = ExtResource("1_alxvg")
+texture = ExtResource("2_d2u3c")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -774,7 +774,7 @@ separation = Vector2i(1, 1)
 26:17/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bmuq"]
-texture = ExtResource("2_geirw")
+texture = ExtResource("3_n74rl")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -2608,7 +2608,7 @@ sources/0 = SubResource("TileSetAtlasSource_rsiac")
 sources/1 = SubResource("TileSetAtlasSource_3bmuq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alxvg"]
-texture = ExtResource("1_alxvg")
+texture = ExtResource("2_d2u3c")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -3091,7 +3091,7 @@ separation = Vector2i(1, 1)
 26:17/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_geirw"]
-texture = ExtResource("2_geirw")
+texture = ExtResource("3_n74rl")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -4906,7 +4906,7 @@ sources/0 = SubResource("TileSetAtlasSource_alxvg")
 sources/1 = SubResource("TileSetAtlasSource_geirw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nn7w8"]
-texture = ExtResource("1_alxvg")
+texture = ExtResource("2_d2u3c")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -5399,7 +5399,7 @@ separation = Vector2i(1, 1)
 26:17/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b26wi"]
-texture = ExtResource("2_geirw")
+texture = ExtResource("3_n74rl")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -7169,7 +7169,7 @@ sources/0 = SubResource("TileSetAtlasSource_nn7w8")
 sources/1 = SubResource("TileSetAtlasSource_b26wi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hwjxs"]
-texture = ExtResource("1_alxvg")
+texture = ExtResource("2_d2u3c")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -7655,7 +7655,7 @@ separation = Vector2i(1, 1)
 26:17/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewknp"]
-texture = ExtResource("2_geirw")
+texture = ExtResource("3_n74rl")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -9429,8 +9429,8 @@ size = Vector2(25, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alxvg"]
 
-[node name="Intro" type="Node2D" unique_id=1583034927]
-script = ExtResource("1_hwjxs")
+[node name="PlayerHouse" type="Node2D" unique_id=1583034927]
+script = ExtResource("1_ojju5")
 
 [node name="Black" type="ColorRect" parent="." unique_id=1770002352]
 offset_left = -665.0
@@ -9457,12 +9457,12 @@ tile_set = SubResource("TileSet_ewknp")
 tile_map_data = PackedByteArray("AAANAP7/AQAcAAYAAAAOAP7/AQAdAAYAAAD+/wAAAQAUAAcAAAAMAAMAAAARAAcAAAAOAAMAAAARAAcAAAAMAAQAAAATAAcAAAAOAAQAAAATAAcAAAAFAAQAAAASAAYAAAA=")
 tile_set = SubResource("TileSet_a7jvs")
 
-[node name="Player" parent="." unique_id=758467496 instance=ExtResource("3_hwjxs")]
+[node name="Player" parent="." unique_id=758467496 instance=ExtResource("4_ox8el")]
 position = Vector2(12, -13)
 showPlayerFrame = false
 
 [node name="Triggers" type="Node2D" parent="." unique_id=892478038]
-script = ExtResource("4_rsiac")
+script = ExtResource("5_6tim1")
 
 [node name="World" type="Area2D" parent="Triggers" unique_id=411109748]
 position = Vector2(224, -22)
