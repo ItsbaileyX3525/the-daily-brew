@@ -6,9 +6,11 @@ var default_playerData: Dictionary = {
 	"maxHealth" : 100,
 	"neededExp" : 100,
 	"exp" : 0,
-	"playerInventory" : [
-		[]
-	]
+	"playerInventory" : [ #[item, slot_pos]
+		["wakame", 0],
+		["heal_shroom", 1]
+	],
+	"current_quest": "None",
 }
 
 var playerData: Dictionary

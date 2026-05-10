@@ -30,6 +30,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:        
 			advance_to_next_line()
 
+func clear() -> void:
+	line_index = 0
+	lines = []
+	is_speaking = false
+	skip = false
+	visible = false
+	character = null
+
 func create_dialog(new_lines: Array[String], char: Button) -> void:
 	if visible and lines.size() > 0:
 		return
@@ -82,6 +90,8 @@ func display_text(text: String) -> void:
 			speech.visible_characters = total_chars
 			break
 
+		if get_tree() == null: #Switched to brew or something
+			return
 		await get_tree().process_frame
 		current_chars += typing_speed * get_process_delta_time()
 		speech.visible_characters = int(current_chars)

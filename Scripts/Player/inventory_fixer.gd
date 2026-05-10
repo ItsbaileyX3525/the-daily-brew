@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var item_slots: Array = [
-	$MarginContainer/GridContainer/ItemSlot, $MarginContainer/GridContainer/ItemSlot2, $MarginContainer/GridContainer/ItemSlot3, $MarginContainer/GridContainer/ItemSlot4, $MarginContainer/GridContainer/ItemSlot5, $MarginContainer/GridContainer/ItemSlot6, $MarginContainer/GridContainer/ItemSlot7, $MarginContainer/GridContainer/ItemSlot8, $MarginContainer/GridContainer/ItemSlot9, $MarginContainer/GridContainer/ItemSlot10, $MarginContainer/GridContainer/ItemSlot11, $MarginContainer/GridContainer/ItemSlot12, $MarginContainer/GridContainer/ItemSlot13, $MarginContainer/GridContainer/ItemSlot14, $MarginContainer/GridContainer/ItemSlot15, $MarginContainer/GridContainer/ItemSlot16
+	$MarginContainer/GridContainer/ItemSlot, $MarginContainer/GridContainer/ItemSlot2, $MarginContainer/GridContainer/ItemSlot3, $MarginContainer/GridContainer/ItemSlot4, $MarginContainer/GridContainer/ItemSlot5, $MarginContainer/GridContainer/ItemSlot6, $MarginContainer/GridContainer/ItemSlot7, $MarginContainer/GridContainer/ItemSlot8, $MarginContainer/GridContainer/ItemSlot9, $MarginContainer/GridContainer/ItemSlot10, $MarginContainer/GridContainer/ItemSlot11, $MarginContainer/GridContainer/ItemSlot12
 ]
 
 func _ready() -> void:
@@ -14,8 +14,8 @@ func _ready() -> void:
 		print(e)
 		print("Item slot: ", e[1])
 		print("Item name: ", e[0])
-		print("Yea: ", DataManager.items[e[0]])
-		item_slots[e[1]].get_child(0).texture = DataManager.items[e[0]]
+		item_slots[e[1]].get_child(0).texture = ItemManager.get_item_texture(e[0])
+		item_slots[e[1]].set_meta("tooltip_text", ItemManager.get_item_description(e[0]))
 
 var data_bk
 func _notification(what: int) -> void:
@@ -25,5 +25,8 @@ func _notification(what: int) -> void:
 		if is_drag_successful():
 			return
 		if data_bk:
-			data_bk.show()
+			if typeof(data_bk) == TYPE_DICTIONARY and data_bk.has("icon"):
+				data_bk.icon.show()
+			elif data_bk is CanvasItem:
+				data_bk.show()
 			data_bk = null
