@@ -1,7 +1,7 @@
 extends PanelContainer
 
 var opacity_tween: Tween = null
-const OFFSET: Vector2 = Vector2.ONE * 35.0
+@export var offset: Vector2 = Vector2.ONE * 35.0
 @onready var rich_text_label: RichTextLabel = $MarginContainer/RichTextLabel
 
 func _ready() -> void:
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if visible and event is InputEventMouseMotion:
-		global_position = get_global_mouse_position() + OFFSET
+		global_position = get_global_mouse_position() + offset
 		size.y = Vector2.ZERO.y
 
 func tween_opacity(to: float):

@@ -5,8 +5,6 @@ extends Button
 var char_name: String = "Elfen girl"
 var curr_pos: Vector2
 
-signal tween_fin
-
 var lines: Array[String] = [
 	"You finally made it into the shop!",
 	"You can come here during market times and sell potions!",

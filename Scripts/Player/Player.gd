@@ -27,6 +27,7 @@ signal tween_complete
 
 func _ready() -> void:
 	player_frame.visible = showPlayerFrame
+	#Load player hp and that
 
 func parse_string(input: String) -> String:
 	var regex = RegEx.new()

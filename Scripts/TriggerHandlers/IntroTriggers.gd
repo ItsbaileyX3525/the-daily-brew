@@ -21,7 +21,7 @@ func _ready() -> void:
 			"teleport" : func(body:Node2D, trigger: Area2D): teleport_trigger(body, trigger.get_meta("location")),
 		},
 		"body_left" : {
-			"teleport" : func(body:Node2D, trigger: Area2D): left_teleport_trigger(body),
+			"teleport" : func(body:Node2D, _trigger: Area2D): left_teleport_trigger(body),
 		}
 	}
 	

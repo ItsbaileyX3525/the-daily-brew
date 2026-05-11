@@ -15,7 +15,7 @@ corner_radius_bottom_left = 12
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84opu"]
-bg_color = Color(0.18340802, 0.18340802, 0.18340802, 0.9098039)
+bg_color = Color(0.2509804, 0.15294118, 0.003921569, 1)
 
 [node name="Brew" type="Control" unique_id=1994284876]
 layout_mode = 3
@@ -111,7 +111,6 @@ offset_bottom = 388.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_65yii")
 
 [node name="Inventory" type="Control" parent="." unique_id=560955095]
-visible = false
 anchors_preset = 0
 offset_left = 104.0
 offset_top = 40.0
@@ -124,7 +123,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
 offset_top = 51.0
+offset_right = 6.0
 offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2

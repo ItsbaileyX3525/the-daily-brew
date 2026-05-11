@@ -1,11 +1,15 @@
 extends Node
 
+signal data_loaded
+var is_data_loaded: bool = false
+
 var default_playerData: Dictionary = {
 	"charname" : "None",
 	"firstPlay" : "true",
 	"maxHealth" : 100,
 	"neededExp" : 100,
 	"exp" : 0,
+	"level": 1,
 	"playerInventory" : [ #[item, slot_pos]
 		["wakame", 0],
 		["heal_shroom", 1]
@@ -36,3 +40,5 @@ func _ready() -> void:
 	load_data()
 	playerData = load_data().duplicate_deep()
 	print(playerData)
+	data_loaded.emit()
+	is_data_loaded = true

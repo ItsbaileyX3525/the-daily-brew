@@ -5,6 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://dxcesxr7hnufl" path="res://Assets/Sprites/Character/Idle/Idle.png" id="2_gntrk"]
 [ext_resource type="Texture2D" uid="uid://b1mt1ui10ghyp" path="res://Assets/Textures/UI/HUD stuff/PlayerFrame.png" id="4_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://cfw4n8jxsvflx" path="res://Assets/Textures/UI/HUD stuff/Sign.jpeg" id="4_dewec"]
+[ext_resource type="Script" uid="uid://bjmpb3g16pfyf" path="res://Scripts/Player/PlayerInventoryHandler.gd" id="4_glx4g"]
+[ext_resource type="Texture2D" uid="uid://df5l4q2ccovfq" path="res://Assets/Textures/UI/HUD stuff/Backpack.png" id="5_nn08x"]
+[ext_resource type="Script" uid="uid://c1bco6jo2dmso" path="res://Scripts/Player/inventory_fixer.gd" id="6_bhhdu"]
+[ext_resource type="Script" uid="uid://4rqmsxjcrxvp" path="res://Scripts/Player/item_slot.gd" id="7_megsn"]
+[ext_resource type="StyleBox" uid="uid://bl0gt2v6faqfv" path="res://Themes/Inventory_Item.tres" id="7_yoq75"]
+[ext_resource type="Script" uid="uid://bw32ui24g5aog" path="res://Scripts/Player/Tooltip.gd" id="8_yoq75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
 size = Vector2(15, 8)
@@ -158,26 +164,22 @@ _data = {
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nn08x"]
 texture = ExtResource("4_5ixxa")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn08x"]
-bg_color = Color(0.7184656, 0.53537476, 0.27307016, 0.7490196)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ee3"]
-bg_color = Color(0.8618411, 0.49729186, 0.07360173, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhhdu"]
 bg_color = Color(0.66358036, 0.5473008, 0.3596383, 0.7372549)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_megsn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoq75"]
+bg_color = Color(0, 0, 0.07450981, 0.70980394)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewec"]
 bg_color = Color(0.09803922, 0.09803922, 0.09803922, 0.6666667)
@@ -241,6 +243,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_glx4g")
 
 [node name="PlayerFrame" type="Control" parent="UI/HUD" unique_id=1673916904]
 anchors_preset = 0
@@ -249,19 +252,19 @@ offset_top = -123.0
 offset_right = -89.0
 offset_bottom = -83.0
 
-[node name="Panel" type="Panel" parent="UI/HUD/PlayerFrame" unique_id=1290388452]
+[node name="Frame" type="Panel" parent="UI/HUD/PlayerFrame" unique_id=1290388452]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -1.0
 offset_right = -8.0
-offset_bottom = 16.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nn08x")
 
-[node name="CharName" type="Label" parent="UI/HUD/PlayerFrame/Panel" unique_id=474111145]
+[node name="CharName" type="Label" parent="UI/HUD/PlayerFrame/Frame" unique_id=474111145]
 layout_mode = 0
 offset_left = 8.999992
 offset_top = 4.0
@@ -272,95 +275,30 @@ theme_override_font_sizes/font_size = 50
 text = "Baile"
 vertical_alignment = 1
 
-[node name="HealthAmount" type="Label" parent="UI/HUD/PlayerFrame/Panel" unique_id=1348335393]
-layout_mode = 0
-offset_left = 62.000015
-offset_top = 18.0
-offset_right = 495.59937
-offset_bottom = 75.0
-scale = Vector2(0.1267575, 0.1267575)
-theme_override_font_sizes/font_size = 41
-text = "500 / 500"
-horizontal_alignment = 2
-
-[node name="EXPAmount" type="Label" parent="UI/HUD/PlayerFrame/Panel" unique_id=2094892485]
+[node name="EXPAmount" type="Label" parent="UI/HUD/PlayerFrame/Frame" unique_id=2094892485]
 layout_mode = 0
 offset_left = 74.00002
-offset_top = 33.0
+offset_top = 20.0
 offset_right = 372.12692
-offset_bottom = 90.0
+offset_bottom = 77.0
 scale = Vector2(0.14151697, 0.14151697)
 theme_override_font_sizes/font_size = 41
 text = "500 / 500"
 horizontal_alignment = 2
 
-[node name="Health" type="ProgressBar" parent="UI/HUD/PlayerFrame/Panel" unique_id=167638457]
-layout_mode = 0
-offset_left = 8.078278
-offset_top = 26.000004
-offset_right = 581.9442
-offset_bottom = 52.324135
-scale = Vector2(0.18993983, 0.18993983)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/fill = SubResource("StyleBoxFlat_nn08x")
-value = 21.83
-show_percentage = false
-
-[node name="Label" type="Label" parent="UI/HUD/PlayerFrame/Panel/Health" unique_id=1865392961]
-layout_mode = 0
-offset_left = -1.0408187
-offset_top = -44.366264
-offset_right = 130.95918
-offset_bottom = 12.633736
-scale = Vector2(0.7434555, 0.7434555)
-theme_override_font_sizes/font_size = 41
-text = "Health"
-
-[node name="Tab" type="Panel" parent="UI/HUD/PlayerFrame/Panel/Health" unique_id=1154793240]
-layout_mode = 0
-offset_left = 104.88448
-offset_top = -6.6896043
-offset_right = 115.41415
-offset_bottom = 35.428986
-theme_override_styles/panel = SubResource("StyleBoxFlat_52ee3")
-
-[node name="Tab2" type="Panel" parent="UI/HUD/PlayerFrame/Panel/Health" unique_id=425858203]
-layout_mode = 0
-offset_left = 220.71063
-offset_top = -6.6896043
-offset_right = 231.2403
-offset_bottom = 35.428986
-theme_override_styles/panel = SubResource("StyleBoxFlat_52ee3")
-
-[node name="Tab3" type="Panel" parent="UI/HUD/PlayerFrame/Panel/Health" unique_id=2124904953]
-layout_mode = 0
-offset_left = 336.5368
-offset_top = -6.6896043
-offset_right = 347.06647
-offset_bottom = 35.428986
-theme_override_styles/panel = SubResource("StyleBoxFlat_52ee3")
-
-[node name="Tab4" type="Panel" parent="UI/HUD/PlayerFrame/Panel/Health" unique_id=212342196]
-layout_mode = 0
-offset_left = 452.36298
-offset_top = -6.6896043
-offset_right = 462.89264
-offset_bottom = 35.428986
-theme_override_styles/panel = SubResource("StyleBoxFlat_52ee3")
-
-[node name="EXP" type="ProgressBar" parent="UI/HUD/PlayerFrame/Panel" unique_id=147216647]
+[node name="EXP" type="ProgressBar" parent="UI/HUD/PlayerFrame/Frame" unique_id=147216647]
 layout_mode = 0
 offset_left = 8.000015
-offset_top = 41.843433
+offset_top = 28.843433
 offset_right = 581.86597
-offset_bottom = 68.167564
+offset_bottom = 55.167564
 scale = Vector2(0.18993983, 0.18993983)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/fill = SubResource("StyleBoxFlat_bhhdu")
 value = 21.83
 show_percentage = false
 
-[node name="Label" type="Label" parent="UI/HUD/PlayerFrame/Panel/EXP" unique_id=1094580452]
+[node name="Label" type="Label" parent="UI/HUD/PlayerFrame/Frame/EXP" unique_id=1094580452]
 layout_mode = 0
 offset_left = -8.058548e-05
 offset_top = -47.383442
@@ -369,6 +307,304 @@ offset_bottom = 9.616558
 scale = Vector2(0.7754003, 0.7754003)
 theme_override_font_sizes/font_size = 41
 text = "EXP"
+
+[node name="Holding" type="Panel" parent="UI/HUD/PlayerFrame" unique_id=1585774648]
+layout_mode = 0
+offset_left = 1.9999998
+offset_top = 43.0
+offset_right = 42.0
+offset_bottom = 83.0
+scale = Vector2(0.680112, 0.680112)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/PlayerFrame/Holding" unique_id=2000752690]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/PlayerFrame/Holding/MarginContainer" unique_id=1819783261]
+layout_mode = 2
+
+[node name="Inventory" type="Panel" parent="UI/HUD" unique_id=1157069552]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_megsn")
+script = ExtResource("6_bhhdu")
+
+[node name="Backpack" type="TextureRect" parent="UI/HUD/Inventory" unique_id=474785944]
+layout_mode = 0
+offset_left = -97.0
+offset_top = -91.0
+offset_right = -57.0
+offset_bottom = -51.0
+scale = Vector2(4.685709, 4.685709)
+texture = ExtResource("5_nn08x")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/Inventory" unique_id=1132233200]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -62.0
+offset_right = 100.0
+offset_bottom = -12.0
+scale = Vector2(0.9710653, 0.89267486)
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="UI/HUD/Inventory/MarginContainer" unique_id=124285221]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="ItemSlot" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=1853169151]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot" unique_id=1033964825]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot2" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=1536185708]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot2" unique_id=1086702928]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot3" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=648593366]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot3" unique_id=1341614735]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot4" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=1708331726]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot4" unique_id=342497468]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot5" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=600003592]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot5" unique_id=1831257677]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot6" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=166342856]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot6" unique_id=668373521]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot7" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=935255320]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot7" unique_id=409258864]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot8" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=1954035125]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot8" unique_id=1865010755]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot9" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=528158870]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot9" unique_id=2016061335]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot10" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=2125649628]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot10" unique_id=143445493]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot11" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=811752424]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot11" unique_id=709890074]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="ItemSlot12" type="Button" parent="UI/HUD/Inventory/MarginContainer/GridContainer" unique_id=308364298]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_yoq75")
+theme_override_styles/pressed = ExtResource("7_yoq75")
+theme_override_styles/hover = ExtResource("7_yoq75")
+theme_override_styles/focus = ExtResource("7_yoq75")
+script = ExtResource("7_megsn")
+preview_offset = Vector2(5, 5)
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Inventory/MarginContainer/GridContainer/ItemSlot12" unique_id=991853125]
+layout_mode = 0
+offset_left = 2.5196404
+offset_top = 4.645034
+offset_right = 21.51964
+offset_bottom = 27.645035
+expand_mode = 1
+
+[node name="Tooltip" type="PanelContainer" parent="UI/HUD/Inventory" unique_id=1490325505]
+layout_mode = 0
+offset_right = 506.46454
+offset_bottom = 176.0
+scale = Vector2(0.13228962, 0.13228962)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yoq75")
+script = ExtResource("8_yoq75")
+offset = Vector2(13, 7)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/Inventory/Tooltip" unique_id=361077915]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/HUD/Inventory/Tooltip/MarginContainer" unique_id=694231351]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Some text goes here"
+fit_content = true
 
 [node name="Text" type="Control" parent="UI" unique_id=64881596]
 layout_mode = 1
@@ -422,10 +658,10 @@ horizontal_alignment = 1
 [node name="Fade" type="ColorRect" parent="UI" unique_id=1109231229]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -262.0
-offset_top = -163.0
-offset_right = 286.0
-offset_bottom = 163.0
+offset_left = -275.0
+offset_top = -172.0
+offset_right = 273.0
+offset_bottom = 154.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

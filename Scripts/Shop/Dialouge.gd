@@ -38,10 +38,10 @@ func clear() -> void:
 	visible = false
 	character = null
 
-func create_dialog(new_lines: Array[String], char: Button) -> void:
+func create_dialog(new_lines: Array[String], character_btn: Button) -> void:
 	if visible and lines.size() > 0:
 		return
-	character = char
+	character = character_btn
 	bounce_npc() #Inital bounce on load
 	if not visible:
 		visible = true 

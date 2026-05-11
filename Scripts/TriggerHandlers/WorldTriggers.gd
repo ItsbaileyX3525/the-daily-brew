@@ -34,8 +34,8 @@ func _ready() -> void:
 			"sign" : func(body:Node2D, trigger: Area2D): sign_trigger(body, trigger.get_meta("signtext")),
 		},
 		"body_left" : {
-			"teleport" : func(body:Node2D, trigger: Area2D): left_teleport_trigger(body),
-			"sign" : func(body:Node2D, trigger: Area2D): left_sign_trigger(body),
+			"teleport" : func(body:Node2D, _trigger: Area2D): left_teleport_trigger(body),
+			"sign" : func(body:Node2D, _trigger: Area2D): left_sign_trigger(body),
 		}
 	}
 	

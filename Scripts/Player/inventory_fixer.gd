@@ -16,6 +16,7 @@ func _ready() -> void:
 		print("Item name: ", e[0])
 		item_slots[e[1]].get_child(0).texture = ItemManager.get_item_texture(e[0])
 		item_slots[e[1]].set_meta("tooltip_text", ItemManager.get_item_description(e[0]))
+		item_slots[e[1]].set_meta("item", e[0])
 
 var data_bk
 func _notification(what: int) -> void:

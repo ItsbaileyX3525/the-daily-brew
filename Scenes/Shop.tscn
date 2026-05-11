@@ -19,7 +19,7 @@ corner_radius_bottom_left = 12
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wndna"]
-bg_color = Color(0.18340802, 0.18340802, 0.18340802, 0.9098039)
+bg_color = Color(0.25187472, 0.1524041, 0.0035206683, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2aaoe"]
 bg_color = Color(0.026326895, 0.04394404, 0.18429014, 0.5058824)
@@ -240,7 +240,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
 offset_top = 51.0
+offset_right = 5.0
 offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -262,7 +264,7 @@ theme_override_constants/h_separation = 35
 theme_override_constants/v_separation = 13
 columns = 6
 
-[node name="ItemSlot" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=371454230]
+[node name="ItemSlot" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=411905101]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
@@ -284,12 +286,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot2" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=929814975]
+[node name="ItemSlot2" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1574888991]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot2" unique_id=2144336172]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot2" unique_id=847342755]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -306,12 +308,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot3" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=916703077]
+[node name="ItemSlot3" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1646513369]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot3" unique_id=585703760]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot3" unique_id=1484425214]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -328,12 +330,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot4" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=888889826]
+[node name="ItemSlot4" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=240265402]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot4" unique_id=986254493]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot4" unique_id=1775827211]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -350,12 +352,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot5" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=66614659]
+[node name="ItemSlot5" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=438336142]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot5" unique_id=735949750]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot5" unique_id=1528309913]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -372,12 +374,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot6" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1622162236]
+[node name="ItemSlot6" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1817104512]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot6" unique_id=1052810134]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot6" unique_id=1667123413]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -394,12 +396,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot7" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=686675919]
+[node name="ItemSlot7" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=581001226]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot7" unique_id=678529939]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot7" unique_id=648981901]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -416,12 +418,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot8" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=713730301]
+[node name="ItemSlot8" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1070780946]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot8" unique_id=74821280]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot8" unique_id=720051547]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -438,12 +440,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot9" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1701125367]
+[node name="ItemSlot9" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1678036671]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot9" unique_id=2115196064]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot9" unique_id=929306356]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -460,12 +462,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot10" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1614241883]
+[node name="ItemSlot10" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1013911061]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot10" unique_id=1475898078]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot10" unique_id=1765834910]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -482,12 +484,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot11" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1863214906]
+[node name="ItemSlot11" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=259053000]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot11" unique_id=1077545260]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot11" unique_id=1262439640]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
@@ -504,12 +506,12 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemSlot12" type="Panel" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=1519596005]
+[node name="ItemSlot12" type="Button" parent="Inventory/inventory/MarginContainer/GridContainer" unique_id=669211715]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 script = ExtResource("5_wndna")
 
-[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot12" unique_id=187659507]
+[node name="Icon" type="TextureRect" parent="Inventory/inventory/MarginContainer/GridContainer/ItemSlot12" unique_id=390669920]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 1
 anchors_preset = 8
